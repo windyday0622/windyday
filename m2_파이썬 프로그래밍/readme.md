@@ -23,3 +23,4 @@ except ZeroDivisionError:
 
 hugging space 오픈소스 제공하는 곳!!
 궁금한 건 논문 찾아보기!!
+파이썬 깔기
