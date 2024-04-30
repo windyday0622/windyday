@@ -37,4 +37,23 @@ else:
   print("큰 수가 없습니다.")
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 클래스? 객체?
-  
+
+
+<오답노트>
+Q. 입력받은 문자열의 각 문자를 그 다음 문자로 변경하여 출력하세요.
+
+def shift_characters(input_str):
+    shifted_str = ""
+    for i in range(len(input_str)):
+        # 현재 문자를 다음 문자로 변경하여 추가합니다.
+        shifted_str += chr(ord(input_str[i]) + 1)
+        # 마지막 문자인 경우, 첫 번째 문자로 이동합니다.
+        if shifted_str[-1] > 'z':
+            shifted_str = chr(ord(shifted_str[-1]) - 26)
+    return shifted_str
+
+# 문자열 입력 받기
+input_str = input("문자열을 입력하세요: ")
+
+# 문자열 각 문자를 다음 문자로 변경하여 출력
+print("결과:", shift_characters(input_str))
