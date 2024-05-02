@@ -57,3 +57,7 @@ input_str = input("문자열을 입력하세요: ")
 
 # 문자열 각 문자를 다음 문자로 변경하여 출력
 print("결과:", shift_characters(input_str))
+
+enumerate 내장 함수 : 리스트의 각 요소와 해당 요소의 인덱스가 함께 출력됩니다.
+ex) for i, fruit in enumerate(fruits):
+    print(i, fruit)
