@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task List</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4; 
+    }
+    h1 {
+        color: #333;
+    }
+    form {
+        margin-bottom: 20px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="date"],
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        background: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    li {
+        background: #fff;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    a {
+        margin-left: 10px;
+        color: #007bff;
+        text-decoration: none;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <h1>Task List</h1>
+
+    <!-- 작업 추가 폼 -->
+    <form method="POST" action="/">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+        <p>
+            <label for="title">제목</label><br />
+            <input type="text" name="title" id="title" size="32" value="{{ task_title }}" required/>
+        </p>
+        <p>
+            <label for="contents">내용</label><br />
+            <textarea name="contents" id="contents" rows="4" required>{{ task_contents }}</textarea>
+        </p>
+        <p>
+            <label for="due_date">마감일</label><br />
+            <input type="date" name="due_date" id="due_date" value="{{ task_due_date }}" required />
+        </p>
+        <p>
+            <input type="submit" value="Add Task"/>
+        </p>
+    </form>
+
+    <!-- 작업 목록 -->
+    <ul id="task-list"></ul>
+
+    <!-- 작업을 가져와서 표시하는 JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/tasks")
+                .then((response) => response.json())
+                .then((tasks) => {
+                    const taskList = document.getElementById("task-list");
+                    tasks.forEach((task) => {
+                        const li = document.createElement("li");
+                        li.innerHTML = `<strong>${task.title}</strong><br>
+                                        ${task.contents}<br>
+                                        등록일: ${task.input_date}<br>
+                                        마감일: ${task.due_date}`;
+
+                        // 편집 링크 추가
+                        const editLink = document.createElement("a");
+                        editLink.href = `/edit/${task.id}`;
+                        editLink.textContent = "Edit";
+                        li.appendChild(editLink);
+
+                        // 삭제 링크 추가
+                        const deleteLink = document.createElement("a");
+                        deleteLink.href = `/delete/${task.id}`;
+                        deleteLink.textContent = "Delete";
+                        li.appendChild(deleteLink);
+
+                        taskList.appendChild(li);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
