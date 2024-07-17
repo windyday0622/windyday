@@ -1,0 +1,49 @@
+{
+	"folders": [
+		{
+			"path": "../../myenv"
+		},
+		{
+			"path": "../../TodoList_01"
+		},
+		{
+			"path": "../../TodoList_02"
+		},
+		{
+			"path": "../../TodoList_03"
+		},
+		{
+			"path": "../../TodoList_03_ex"
+		},
+		{
+			"path": "../../TodoList_04"
+		},
+		{
+			"path": "../../TodoList_04_ex"
+		},
+		{
+			"path": "../../TodoList_04_task"
+		},
+		{
+			"path": "../../TodoList_05"
+		},
+		{
+			"path": "../../TodoList_06"
+		},
+		{
+			"path": "../../TodoList_07"
+		},
+		{
+			"path": "../../TodoList_07_mysql"
+		},
+		{
+			"path": "../../TodoList_08"
+		},
+		{
+			"path": "../../TodoList_10"
+		},
+		{
+			"path": "../../캐치테이블"
+		}
+	]
+}
