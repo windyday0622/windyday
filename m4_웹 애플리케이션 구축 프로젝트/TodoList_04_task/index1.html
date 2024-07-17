@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Task List</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tasks = [
+                { title: "과제1" },
+                { title: "과제2" },
+                { title: "과제3" },
+                { title: "과제4" },
+                { title: "과제5" },
+                { title: "과제6" }
+            ];
+            const taskList = document.getElementById("task-list");
+            tasks.forEach((task) => {
+                const li = document.createElement("li");
+                li.textContent = task.title;
+                taskList.appendChild(li);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Task List</h1>
+    <form method="POST" action="/">
+        <input type="hidden" name="csrf_token" value="{{ form.csrf_token._value() }}"/>
+        <p>
+            <label for="title">제목:</label>            
+            <input type="text" name="title" id="title" size="32" required />
+        </p>
+        <p><input type="submit" value="Add Task"/></p>
+    </form>
+    <ul id="task-list">
+          
+    </ul>    
+</body>
+</html>

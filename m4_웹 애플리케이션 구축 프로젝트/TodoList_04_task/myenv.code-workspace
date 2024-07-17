@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "myenv",
+			"path": "../../myenv"
+		},
+		{
+			"name": "TodoList_01",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "TodoList_01"
+	}
+}
