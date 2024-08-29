@@ -167,6 +167,9 @@ print(final_response['choices'][0]['message']['content'])
 - GPT-3과 같은 모델은 문맥적 단어 임베딩을 생성한다. 이는 모델이 문맥에 따라 동일한 단어에 대해 다른 임베딩을 생성한다는 것을 의미한다.(동음이의어를 해결하는 데 좋은 방식일지도...?)
 - GPT-3와 같은 문맥적 모델은 문맥에 따라 다른 임베딩을 생성하여 두 가지 다른 의미를 포착한다.
 - OpenAI의 임베딩 사용은 단어의 의미, 위치, 문맥의 세 가지 측면을 통합하여 언어에 대한 포괄적인 이해를 형성한다. 이를 통해 모델은 인간과 유사한 텍스트를 생성할 수 있는 능력을 갖추게 된다.
+- - Embed Texts API는 Embed Tokens API와 유사하게 임베딩을 생성할 수 있지만 약간의 차이가 있다. Embed Tokens API가 개별 토큰에 대한 임베딩을 생성하는 반면, Embed Texts API는 완전한 텍스트(전체 문장 또는 문서 포함)에 대한 임베딩을 생성한다.
+- Embed Tokens API -> 문맥에 민감한 임베딩이 필요한 경우 Embed Prompt API를 사용
+  
 - # OpenAI의 API를 사용하여 임베딩을 생성하는 의사 코드(embedding API를 사용하는 것도 알아봄.)
 
 import openai
@@ -178,8 +181,6 @@ response = openai.Embedding.create(
 
 print(response.embeddings)
 
-
-- Embed Tokens API -> 문맥에 민감한 임베딩이 필요한 경우 Embed Prompt API를 사용
 
 
 - # 임베딩을 사용하여 텍스트 분류하는 의사 코드
@@ -202,6 +203,7 @@ print(response.embeddings)
  ).embeddings
 
  predictions = classifier.predict(new_embeddings)
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
