@@ -180,6 +180,28 @@ print(response.embeddings)
 
 
 - Embed Tokens API -> 문맥에 민감한 임베딩이 필요한 경우 Embed Prompt API를 사용
+
+
+- # 임베딩을 사용하여 텍스트 분류하는 의사 코드
+
+ from sklearn.linear_model import LogisticRegression
+
+ # 훈련 데이터에 대한 임베딩 생성
+ train_embeddings = openai.Embedding.create(
+   model="gpt-3.5-turbo",
+   tokens=train_texts
+ ).embeddings
+
+ # 임베딩을 사용하여 분류기 훈련
+ classifier = LogisticRegression().fit(train_embeddings, train_labels)
+
+ # 이제 분류기를 사용하여 새 데이터에 대한 레이블 예측
+ new_embeddings = openai.Embedding.create(
+   model="gpt-3.5-turbo",
+   tokens=new_texts
+ ).embeddings
+
+ predictions = classifier.predict(new_embeddings)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
